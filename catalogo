@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dael Platería — Mockup Web</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #1C3A2A;
+    --verde-medio: #2A5240;
+    --verde-claro: #3D6B54;
+    --plata: #B8BAB6;
+    --plata-clara: #D8DAD6;
+    --negro: #0C0C0C;
+    --blanco: #F8F7F4;
+    --crema: #F2F0EB;
+    --gris-suave: #E8E6E1;
+    --texto-secundario: #5A5A5A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--negro);
+    color: var(--blanco);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: rgba(12,12,12,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(184,186,182,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; letter-spacing: 0.2em;
+    color: var(--plata-clara);
+    text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--plata); font-weight: 300; }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    text-decoration: none; color: rgba(248,247,244,0.65);
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 400; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--plata-clara); }
+  .nav-cta {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 400; padding: 0.6rem 1.4rem;
+    border: 0.5px solid var(--plata);
+    color: var(--plata); text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--plata); color: var(--negro); }
+
+  /* ── HERO ── */
+  #hero {
+    height: 100vh; min-height: 640px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    background: var(--negro);
+    text-align: center; padding: 2rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 40%, rgba(28,58,42,0.55) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 40% at 20% 80%, rgba(28,58,42,0.2) 0%, transparent 60%);
+  }
+  .hero-ornamento {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--plata); font-weight: 300; margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .hero-ornamento::before, .hero-ornamento::after {
+    content: ''; width: 48px; height: 0.5px; background: var(--plata); opacity: 0.5;
+  }
+  .hero-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    font-weight: 300; line-height: 0.95;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blanco); position: relative; z-index: 1;
+  }
+  .hero-titulo .acento { color: var(--plata); font-style: italic; font-weight: 300; }
+  .hero-slogan {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: rgba(184,186,182,0.75); font-weight: 300;
+    margin-top: 2rem; position: relative; z-index: 1;
+  }
+  .hero-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 300; font-style: italic;
+    color: rgba(248,247,244,0.55); margin-top: 0.8rem;
+    position: relative; z-index: 1;
+  }
+  .hero-btns {
+    margin-top: 3.5rem; display: flex; gap: 1.2rem;
+    position: relative; z-index: 1; flex-wrap: wrap; justify-content: center;
+  }
+  .btn-principal {
+    padding: 0.9rem 2.5rem; background: var(--verde);
+    color: var(--blanco); text-decoration: none;
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 400; border: 0.5px solid var(--verde-claro);
+    transition: all 0.3s;
+  }
+  .btn-principal:hover { background: var(--verde-medio); }
+  .btn-secundario {
+    padding: 0.9rem 2.5rem; background: transparent;
+    color: var(--plata); text-decoration: none;
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 400; border: 0.5px solid var(--plata);
+    transition: all 0.3s;
+  }
+  .btn-secundario:hover { background: rgba(184,186,182,0.1); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(184,186,182,0.4); display: flex; flex-direction: column;
+    align-items: center; gap: 0.8rem;
+  }
+  .hero-scroll::after {
+    content: ''; width: 0.5px; height: 40px; background: rgba(184,186,182,0.3);
+    animation: scroll-line 2s ease-in-out infinite;
+  }
+  @keyframes scroll-line {
+    0%,100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(0.6); }
+  }
+
+  /* ── SEPARADOR ── */
+  .sep {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1rem; padding: 1.5rem 4rem;
+    background: var(--negro);
+  }
+  .sep-line { flex: 1; height: 0.5px; background: rgba(184,186,182,0.15); }
+  .sep-icon {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--plata); font-size: 1rem; opacity: 0.5;
+  }
+
+  /* ── SOBRE DAEL ── */
+  #sobre {
+    background: var(--negro);
+    padding: 8rem 4rem; display: grid;
+    grid-template-columns: 1fr 1fr; gap: 6rem;
+    align-items: center; max-width: 1200px; margin: 0 auto;
+  }
+  .sobre-img-wrap {
+    position: relative; aspect-ratio: 3/4;
+    background: var(--verde);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .sobre-img-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(145deg, var(--verde) 0%, var(--verde-medio) 60%, #0C1F16 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1rem;
+  }
+  .libro-svg {
+    opacity: 0.3;
+  }
+  .sobre-badge {
+    position: absolute; bottom: -1px; right: -1px;
+    background: var(--negro); padding: 1.2rem 1.8rem;
+    border: 0.5px solid rgba(184,186,182,0.2);
+  }
+  .sobre-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300; color: var(--plata);
+    line-height: 1;
+  }
+  .sobre-badge-txt {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(184,186,182,0.55); font-weight: 300;
+  }
+  .sobre-content { display: flex; flex-direction: column; gap: 2rem; }
+  .seccion-label {
+    font-size: 0.62rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--plata); font-weight: 400;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .seccion-label::after {
+    content: ''; width: 32px; height: 0.5px; background: var(--plata); opacity: 0.5;
+  }
+  .seccion-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+    line-height: 1.2; color: var(--blanco);
+  }
+  .seccion-titulo em { font-style: italic; color: var(--plata); }
+  .sobre-texto {
+    color: rgba(248,247,244,0.55); font-size: 0.9rem;
+    line-height: 1.9; font-weight: 300;
+  }
+  .sobre-valores {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .valor-item {
+    padding: 1.2rem; border: 0.5px solid rgba(184,186,182,0.15);
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .valor-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; color: var(--plata); font-weight: 300;
+  }
+  .valor-txt {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(248,247,244,0.45); font-weight: 300;
+  }
+
+  /* ── CATALOGO ── */
+  #catalogo {
+    background: var(--crema); color: var(--negro);
+    padding: 8rem 4rem;
+  }
+  .catalogo-header {
+    max-width: 1200px; margin: 0 auto 4rem;
+    display: flex; align-items: flex-end; justify-content: space-between;
+  }
+  .catalogo-header .seccion-label { color: var(--verde); }
+  .catalogo-header .seccion-label::after { background: var(--verde); }
+  .catalogo-header .seccion-titulo { color: var(--negro); }
+  .catalogo-header .seccion-titulo em { color: var(--verde-medio); }
+  .catalogo-filtros {
+    display: flex; gap: 1rem; align-items: center;
+  }
+  .filtro-btn {
+    padding: 0.5rem 1.2rem;
+    border: 0.5px solid rgba(28,58,42,0.25);
+    background: transparent; color: var(--verde);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s; font-weight: 400;
+  }
+  .filtro-btn.active, .filtro-btn:hover {
+    background: var(--verde); color: var(--blanco);
+    border-color: var(--verde);
+  }
+  .catalogo-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+  .producto-card {
+    background: var(--blanco); border: 0.5px solid rgba(28,58,42,0.1);
+    transition: transform 0.4s, box-shadow 0.4s; cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .producto-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(28,58,42,0.12); }
+  .producto-img {
+    aspect-ratio: 1; background: var(--gris-suave);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+  .producto-img-inner {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; color: rgba(28,58,42,0.15);
+    font-style: italic;
+  }
+  .producto-badge-new {
+    position: absolute; top: 1rem; left: 1rem;
+    background: var(--verde); color: var(--blanco);
+    font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; font-weight: 400;
+  }
+  .producto-info {
+    padding: 1.5rem;
+    border-top: 0.5px solid rgba(28,58,42,0.08);
+  }
+  .producto-categoria {
+    font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--verde-medio); font-weight: 400; margin-bottom: 0.5rem;
+  }
+  .producto-nombre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; color: var(--negro);
+    margin-bottom: 0.3rem; line-height: 1.3;
+  }
+  .producto-desc {
+    font-size: 0.75rem; color: var(--texto-secundario);
+    margin-bottom: 1.2rem; line-height: 1.7; font-weight: 300;
+  }
+  .producto-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .producto-precio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 500; color: var(--negro);
+  }
+  .producto-ley {
+    font-size: 0.58rem; color: var(--texto-secundario); display: block;
+    letter-spacing: 0.1em;
+  }
+  .btn-wa {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1rem; background: var(--verde);
+    color: var(--blanco); text-decoration: none;
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 400; border: none; cursor: pointer; transition: background 0.3s;
+  }
+  .btn-wa:hover { background: var(--verde-medio); }
+  .wa-icon { width: 14px; height: 14px; }
+
+  /* ── COMO COMPRAR ── */
+  #proceso {
+    background: var(--negro); padding: 8rem 4rem;
+  }
+  .proceso-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center;
+  }
+  .proceso-content { display: flex; flex-direction: column; gap: 2.5rem; }
+  .proceso-pasos { display: flex; flex-direction: column; gap: 0; }
+  .paso {
+    display: flex; gap: 2rem; padding: 2rem 0;
+    border-bottom: 0.5px solid rgba(184,186,182,0.1);
+    align-items: flex-start;
+  }
+  .paso:first-child { border-top: 0.5px solid rgba(184,186,182,0.1); }
+  .paso-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 300; color: rgba(184,186,182,0.25);
+    line-height: 1; min-width: 2.5rem;
+  }
+  .paso-txt { flex: 1; }
+  .paso-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 400; color: var(--blanco);
+    margin-bottom: 0.4rem;
+  }
+  .paso-desc {
+    font-size: 0.8rem; color: rgba(248,247,244,0.45);
+    line-height: 1.8; font-weight: 300;
+  }
+  .proceso-visual {
+    background: var(--verde);
+    aspect-ratio: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 2rem;
+    padding: 3rem; text-align: center;
+    border: 0.5px solid var(--verde-claro);
+  }
+  .proceso-visual-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; color: rgba(248,247,244,0.9);
+    line-height: 1.3; font-style: italic;
+  }
+  .proceso-visual-sub {
+    font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: rgba(248,247,244,0.5); font-weight: 300;
+  }
+  .proceso-wa-btn {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    padding: 1rem 2rem; background: rgba(0,0,0,0.25);
+    color: var(--blanco); text-decoration: none;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 400; border: 0.5px solid rgba(248,247,244,0.3);
+    transition: all 0.3s;
+  }
+  .proceso-wa-btn:hover { background: rgba(0,0,0,0.4); }
+
+  /* ── CUIDADOS ── */
+  #cuidados {
+    background: var(--crema); color: var(--negro); padding: 7rem 4rem;
+  }
+  .cuidados-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+  .cuidados-header {
+    text-align: center; margin-bottom: 4rem;
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .cuidados-header .seccion-label { color: var(--verde); }
+  .cuidados-header .seccion-label::after { background: var(--verde); opacity: 0.5; }
+  .cuidados-header .seccion-titulo { color: var(--negro); text-align: center; }
+  .cuidados-header .seccion-titulo em { color: var(--verde-medio); }
+  .cuidados-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: rgba(28,58,42,0.1);
+    border: 0.5px solid rgba(28,58,42,0.1);
+  }
+  .cuidado-item {
+    background: var(--crema); padding: 2.5rem 2rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    transition: background 0.3s;
+  }
+  .cuidado-item:hover { background: var(--blanco); }
+  .cuidado-icon {
+    width: 36px; height: 36px; opacity: 0.5;
+    color: var(--verde);
+  }
+  .cuidado-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 400; color: var(--negro);
+  }
+  .cuidado-desc {
+    font-size: 0.78rem; color: var(--texto-secundario);
+    line-height: 1.8; font-weight: 300;
+  }
+
+  /* ── TESTIMONIO ── */
+  #testimonio {
+    background: var(--verde); padding: 8rem 4rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  #testimonio::before {
+    content: '"';
+    position: absolute; top: -2rem; left: 50%; transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20rem; font-weight: 300; color: rgba(0,0,0,0.08); line-height: 1;
+    pointer-events: none;
+  }
+  .testimonio-inner {
+    max-width: 700px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center; gap: 2rem;
+    position: relative; z-index: 1;
+  }
+  .testimonio-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 300; font-style: italic;
+    color: rgba(248,247,244,0.92); line-height: 1.5;
+  }
+  .testimonio-autor {
+    font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(248,247,244,0.5); font-weight: 300;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .testimonio-autor::before, .testimonio-autor::after {
+    content: ''; width: 24px; height: 0.5px; background: rgba(248,247,244,0.3);
+  }
+
+  /* ── CONTACTO / FOOTER ── */
+  #contacto {
+    background: var(--negro); padding: 7rem 4rem 4rem;
+  }
+  .contacto-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    padding-bottom: 5rem;
+    border-bottom: 0.5px solid rgba(184,186,182,0.1);
+  }
+  .contacto-left { display: flex; flex-direction: column; gap: 2rem; }
+  .contacto-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+    color: var(--blanco); line-height: 1.2;
+  }
+  .contacto-titulo em { font-style: italic; color: var(--plata); }
+  .contacto-desc {
+    font-size: 0.85rem; color: rgba(248,247,244,0.5);
+    line-height: 1.9; font-weight: 300;
+  }
+  .contacto-btns { display: flex; flex-direction: column; gap: 1rem; }
+  .btn-wa-grande {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 2rem; background: #25D366; color: #fff;
+    text-decoration: none; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 400; transition: all 0.3s; max-width: 280px;
+  }
+  .btn-wa-grande:hover { background: #20B859; }
+  .btn-instagram {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.2rem 2rem; background: transparent; color: var(--plata);
+    text-decoration: none; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 400; border: 0.5px solid var(--plata);
+    transition: all 0.3s; max-width: 280px;
+  }
+  .btn-instagram:hover { background: rgba(184,186,182,0.1); }
+  .contacto-right { display: flex; flex-direction: column; gap: 2rem; }
+  .contacto-info-item {
+    padding: 1.8rem; border: 0.5px solid rgba(184,186,182,0.12);
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .contacto-info-label {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--plata); font-weight: 400;
+  }
+  .contacto-info-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--blanco); font-weight: 300;
+  }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 3rem; flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400; letter-spacing: 0.2em;
+    color: var(--plata-clara); text-transform: uppercase;
+  }
+  .footer-copy {
+    font-size: 0.62rem; color: rgba(184,186,182,0.3);
+    letter-spacing: 0.1em; font-weight: 300;
+  }
+  .footer-frase {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; font-style: italic;
+    color: rgba(184,186,182,0.35); font-weight: 300;
+  }
+
+  /* ── NOTA GUIA ── */
+  .nota-guia {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--verde); color: var(--blanco);
+    padding: 1rem 1.5rem; font-size: 0.68rem;
+    letter-spacing: 0.1em; max-width: 260px;
+    border: 0.5px solid var(--verde-claro);
+    line-height: 1.6; z-index: 200;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .nota-guia strong { font-weight: 500; display: block; margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Dael <span>Platería</span></div>
+  <div class="nav-links">
+    <a href="#sobre">Nuestra historia</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#proceso">Cómo comprar</a>
+    <a href="#cuidados">Cuidados</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="#contacto" class="nav-cta">Escribirnos</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornamento">Plata Ley 925</div>
+  <h1 class="hero-titulo">
+    Dael<br><span class="acento">Platería</span>
+  </h1>
+  <p class="hero-slogan">Sencillez y elegancia</p>
+  <p class="hero-frase">"Hay historias que se llevan puestas"</p>
+  <div class="hero-btns">
+    <a href="#catalogo" class="btn-principal">Ver catálogo</a>
+    <a href="#sobre" class="btn-secundario">Nuestra historia</a>
+  </div>
+  <div class="hero-scroll">Descubrir</div>
+</section>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-icon">◇</div><div class="sep-line"></div></div>
+
+<!-- SOBRE DAEL -->
+<section id="sobre">
+  <div class="sobre-img-wrap">
+    <div class="sobre-img-placeholder">
+      <!-- Representación del concepto libro -->
+      <svg class="libro-svg" width="120" height="150" viewBox="0 0 120 150" fill="none">
+        <rect x="10" y="10" width="100" height="130" rx="3" stroke="#B8BAB6" stroke-width="1"/>
+        <rect x="16" y="10" width="4" height="130" fill="#B8BAB6" opacity="0.3"/>
+        <line x1="30" y1="45" x2="90" y2="45" stroke="#B8BAB6" stroke-width="0.5" opacity="0.5"/>
+        <line x1="30" y1="55" x2="90" y2="55" stroke="#B8BAB6" stroke-width="0.5" opacity="0.5"/>
+        <line x1="30" y1="65" x2="75" y2="65" stroke="#B8BAB6" stroke-width="0.5" opacity="0.5"/>
+        <line x1="30" y1="85" x2="90" y2="85" stroke="#B8BAB6" stroke-width="0.5" opacity="0.3"/>
+        <line x1="30" y1="95" x2="90" y2="95" stroke="#B8BAB6" stroke-width="0.5" opacity="0.3"/>
+        <line x1="30" y1="105" x2="80" y2="105" stroke="#B8BAB6" stroke-width="0.5" opacity="0.3"/>
+      </svg>
+      <p style="font-family:'Cormorant Garamond',serif; color:rgba(184,186,182,0.3); font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase;">
+        Aquí tu foto de marca
+      </p>
+    </div>
+    <div class="sobre-badge">
+      <div class="sobre-badge-num">925</div>
+      <div class="sobre-badge-txt">Plata pura</div>
+    </div>
+  </div>
+
+  <div class="sobre-content">
+    <p class="seccion-label">Nuestra historia</p>
+    <h2 class="seccion-titulo">
+      Cada joya,<br>un <em>capítulo</em> tuyo
+    </h2>
+    <p class="sobre-texto">
+      Dael Platería nace de la convicción de que las historias más hermosas no solo se leen, 
+      también se llevan puestas. Cada pieza en plata ley 925 es pensada para quienes 
+      encuentran belleza en lo esencial, quienes prefieren un trazo limpio sobre el ruido.
+    </p>
+    <p class="sobre-texto">
+      Como en un buen libro, nuestras joyas no gritan: susurran. Acompañan 
+      tu historia con discreción y carácter.
+    </p>
+    <div class="sobre-valores">
+      <div class="valor-item">
+        <div class="valor-num">925</div>
+        <div class="valor-txt">Ley de plata garantizada</div>
+      </div>
+      <div class="valor-item">
+        <div class="valor-num">∞</div>
+        <div class="valor-txt">Durabilidad y calidad</div>
+      </div>
+      <div class="valor-item">
+        <div class="valor-num">01</div>
+        <div class="valor-txt">Diseño minimalista</div>
+      </div>
+      <div class="valor-item">
+        <div class="valor-num">♡</div>
+        <div class="valor-txt">Hecho con propósito</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep" style="background:var(--negro)"><div class="sep-line"></div><div class="sep-icon">◇</div><div class="sep-line"></div></div>
+
+<!-- CATÁLOGO -->
+<section id="catalogo">
+  <div class="catalogo-header">
+    <div>
+      <p class="seccion-label">Colección</p>
+      <h2 class="seccion-titulo">Piezas que <em>cuentan</em></h2>
+    </div>
+    <div class="catalogo-filtros">
+      <button class="filtro-btn active">Todo</button>
+      <button class="filtro-btn">Anillos</button>
+      <button class="filtro-btn">Cadenas</button>
+      <button class="filtro-btn">Aretes</button>
+      <button class="filtro-btn">Pulseras</button>
+    </div>
+  </div>
+
+  <div class="catalogo-grid">
+
+    <!-- Producto 1 -->
+    <div class="producto-card">
+      <div class="producto-img">
+        <div class="producto-img-inner">◇</div>
+        <span class="producto-badge-new">Nueva</span>
+      </div>
+      <div class="producto-info">
+        <div class="producto-categoria">Anillos</div>
+        <div class="producto-nombre">Anillo Prólogo</div>
+        <div class="producto-desc">Banda lisa en plata 925. La simpleza como declaración.</div>
+        <div class="producto-footer">
+          <div>
+            <div class="producto-precio">$85.000</div>
+            <span class="producto-ley">Plata Ley 925</span>
+          </div>
+          <a href="#" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="producto-card">
+      <div class="producto-img">
+        <div class="producto-img-inner">○</div>
+      </div>
+      <div class="producto-info">
+        <div class="producto-categoria">Cadenas</div>
+        <div class="producto-nombre">Cadena Capítulo I</div>
+        <div class="producto-desc">Eslabón rolo 2mm, 45 cm. Elegancia sin esfuerzo.</div>
+        <div class="producto-footer">
+          <div>
+            <div class="producto-precio">$120.000</div>
+            <span class="producto-ley">Plata Ley 925</span>
+          </div>
+          <a href="#" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="producto-card">
+      <div class="producto-img">
+        <div class="producto-img-inner">◈</div>
+        <span class="producto-badge-new">Nueva</span>
+      </div>
+      <div class="producto-info">
+        <div class="producto-categoria">Aretes</div>
+        <div class="producto-nombre">Aretes Epílogo</div>
+        <div class="producto-desc">Argolla pequeña pulida. El cierre perfecto de cualquier historia.</div>
+        <div class="producto-footer">
+          <div>
+            <div class="producto-precio">$65.000</div>
+            <span class="producto-ley">Plata Ley 925</span>
+          </div>
+          <a href="#" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 4 -->
+    <div class="producto-card">
+      <div class="producto-img">
+        <div class="producto-img-inner">⌘</div>
+      </div>
+      <div class="producto-info">
+        <div class="producto-categoria">Pulseras</div>
+        <div class="producto-nombre">Pulsera Verso</div>
+        <div class="producto-desc">Eslabón plano, ajustable. Para llevar tu historia en la muñeca.</div>
+        <div class="producto-footer">
+          <div>
+            <div class="producto-precio">$95.000</div>
+            <span class="producto-ley">Plata Ley 925</span>
+          </div>
+          <a href="#" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 5 -->
+    <div class="producto-card">
+      <div class="producto-img">
+        <div class="producto-img-inner">◉</div>
+      </div>
+      <div class="producto-info">
+        <div class="producto-categoria">Collares</div>
+        <div class="producto-nombre">Collar Narrativa</div>
+        <div class="producto-desc">Dije geométrico minimalista. Tu símbolo, tu idioma.</div>
+        <div class="producto-footer">
+          <div>
+            <div class="producto-precio">$140.000</div>
+            <span class="producto-ley">Plata Ley 925</span>
+          </div>
+          <a href="#" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Producto 6 -->
+    <div class="producto-card">
+      <div class="producto-img">
+        <div class="producto-img-inner">✦</div>
+      </div>
+      <div class="producto-info">
+        <div class="producto-categoria">Sets</div>
+        <div class="producto-nombre">Set Edición</div>
+        <div class="producto-desc">Cadena + arete argolla. Un relato completo.</div>
+        <div class="producto-footer">
+          <div>
+            <div class="producto-precio">$175.000</div>
+            <span class="producto-ley">Plata Ley 925</span>
+          </div>
+          <a href="#" class="btn-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMO COMPRAR -->
+<section id="proceso">
+  <div class="proceso-inner">
+    <div class="proceso-content">
+      <div>
+        <p class="seccion-label">Proceso de compra</p>
+        <h2 class="seccion-titulo">Así de <em>sencillo</em></h2>
+      </div>
+      <div class="proceso-pasos">
+        <div class="paso">
+          <div class="paso-num">01</div>
+          <div class="paso-txt">
+            <div class="paso-titulo">Elige tu pieza</div>
+            <div class="paso-desc">Recorre el catálogo y encuentra la joya que cuenta tu historia. Toma una captura o anota el nombre.</div>
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso-num">02</div>
+          <div class="paso-txt">
+            <div class="paso-titulo">Escríbenos por WhatsApp</div>
+            <div class="paso-desc">Haz clic en "Pedir" o en el botón de contacto. Compártenos tu captura y te damos toda la info de pago y envío.</div>
+          </div>
+        </div>
+        <div class="paso">
+          <div class="paso-num">03</div>
+          <div class="paso-txt">
+            <div class="paso-titulo">Confirma y recibe</div>
+            <div class="paso-desc">Realizas el pago y coordinamos el envío. Tu historia llega a donde estés, protegida y con cariño.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="proceso-visual">
+      <div class="proceso-visual-titulo">"Hay historias que se llevan puestas"</div>
+      <div class="proceso-visual-sub">— Dael Platería</div>
+      <a href="#" class="proceso-wa-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Hablemos por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CUIDADOS -->
+<section id="cuidados">
+  <div class="cuidados-inner">
+    <div class="cuidados-header">
+      <p class="seccion-label">Tu joya</p>
+      <h2 class="seccion-titulo">Cuida tu <em>historia</em></h2>
+    </div>
+    <div class="cuidados-grid">
+      <div class="cuidado-item">
+        <svg class="cuidado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+        </svg>
+        <div class="cuidado-titulo">Evita el agua</div>
+        <div class="cuidado-desc">Retira antes de ducharte, nadar o hacer ejercicio. La plata 925 puede oxidarse con la humedad constante.</div>
+      </div>
+      <div class="cuidado-item">
+        <svg class="cuidado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+        </svg>
+        <div class="cuidado-titulo">Guarda bien</div>
+        <div class="cuidado-desc">Consérvala en una bolsa de tela o estuche individual. El contacto con otras joyas puede rayarla.</div>
+      </div>
+      <div class="cuidado-item">
+        <svg class="cuidado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/>
+        </svg>
+        <div class="cuidado-titulo">Limpieza suave</div>
+        <div class="cuidado-desc">Un paño suave seco para el día a día. Si necesita más limpieza, usa paño de plata específico.</div>
+      </div>
+      <div class="cuidado-item">
+        <svg class="cuidado-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <div class="cuidado-titulo">Ponla última</div>
+        <div class="cuidado-desc">Aplica perfume, crema y maquillaje antes de ponerte la joya. Los químicos aceleran la oxidación.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIO -->
+<section id="testimonio">
+  <div class="testimonio-inner">
+    <div class="testimonio-quote">
+      "Me enamoré del anillo desde la primera vez que lo vi. No hay nada de más, no hay nada de menos. Es exactamente la historia que quiero llevar puesta."
+    </div>
+    <div class="testimonio-autor">Cliente Dael</div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <div class="contacto-left">
+      <div>
+        <p class="seccion-label">Contacto</p>
+        <h2 class="contacto-titulo">Cuéntanos<br>tu <em>historia</em></h2>
+      </div>
+      <p class="contacto-desc">
+        ¿Tienes dudas sobre alguna pieza? ¿Quieres saber medidas, disponibilidad o tiempo de entrega? 
+        Escríbenos, respondemos rápido y con toda la atención que tu compra merece.
+      </p>
+      <div class="contacto-btns">
+        <a href="https://wa.me/57XXXXXXXXXX?text=Hola%20Dael%20Platería,%20me%20interesa%20una%20pieza%20del%20catálogo" class="btn-wa-grande">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <a href="#" class="btn-instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Ver en Instagram
+        </a>
+      </div>
+    </div>
+    <div class="contacto-right">
+      <div class="contacto-info-item">
+        <div class="contacto-info-label">Horario de atención</div>
+        <div class="contacto-info-val">Lunes a sábado, 8am – 7pm</div>
+      </div>
+      <div class="contacto-info-item">
+        <div class="contacto-info-label">Tiempo de respuesta</div>
+        <div class="contacto-info-val">Menos de 2 horas en horario</div>
+      </div>
+      <div class="contacto-info-item">
+        <div class="contacto-info-label">Envíos</div>
+        <div class="contacto-info-val">A todo Colombia · Internacional disponible</div>
+      </div>
+      <div class="contacto-info-item">
+        <div class="contacto-info-label">Garantía</div>
+        <div class="contacto-info-val">Plata Ley 925 certificada · 30 días</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-logo">Dael Platería</div>
+    <div class="footer-frase">"Hay historias que se llevan puestas"</div>
+    <div class="footer-copy">© 2025 Dael Platería · Plata Ley 925</div>
+  </div>
+</section>
+
+<!-- NOTA PARA LA DUEÑA -->
+<div class="nota-guia">
+  <strong>📌 Este es tu mockup de referencia</strong>
+  Este diseño es tu guía visual. Más abajo te explico cómo replicarlo en Google Sites paso a paso.
+</div>
+
+<script>
+document.querySelectorAll('.filtro-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
